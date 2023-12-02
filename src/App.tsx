@@ -1,15 +1,17 @@
 import { useState } from "react";
 import "./App.css";
+import { replaceCamelCaseWithSpaces } from "./replaceCamelCaseWithSpaces";
 
 function App() {
-  const [color, setColor] = useState("red");
-  const newButtonColor = color === "blue" ? "red" : "blue";
+  const [color, setColor] = useState("MediumVioletRed");
+  const newButtonColor =
+    color === "MidnightBlue" ? "MediumVioletRed" : "MidnightBlue";
 
   const changeColor = () => {
-    if (color === "blue") {
-      setColor("red");
+    if (color === "MidnightBlue") {
+      setColor("MediumVioletRed");
     } else {
-      setColor("blue");
+      setColor("MidnightBlue");
     }
   };
 
@@ -22,7 +24,7 @@ function App() {
         disabled={disabled}
         onClick={changeColor}
       >
-        {`Change to ${newButtonColor}`}
+        {`Change to ${replaceCamelCaseWithSpaces(newButtonColor)}`}
       </button>
       <input
         id="disable-button-checkbox"
