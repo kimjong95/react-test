@@ -2,6 +2,10 @@
   "name": "react-testing",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": "18.12.1"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -10,6 +14,8 @@
     "@types/node": "^16.18.65",
     "@types/react": "^18.2.39",
     "@types/react-dom": "^18.2.17",
+    "axios": "^1.6.2",
+    "msw": "^1.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
@@ -17,12 +23,13 @@
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
     "typescript": "^4.9.5",
+    "vitest": "^0.34.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -42,5 +49,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "babel-jest": "^29.7.0",
+    "undici": "^5.28.2"
   }
 }

@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/test"]
+  "include": ["src", "src/test", "vitest.setup.ts"]
 }
