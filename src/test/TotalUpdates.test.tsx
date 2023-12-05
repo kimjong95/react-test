@@ -1,4 +1,4 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Options from "../pages/entry/Options";
 import OrderEntry from "../pages/entry/OrderEntry";
@@ -43,25 +43,19 @@ test("update toppings subtotal when toppings change", async () => {
   const cherriesCheckbox = await screen.findByRole("checkbox", {
     name: "Cherries",
   });
-  user.click(cherriesCheckbox);
-  await waitFor(() => {
-    expect(toppingsTotal).toHaveTextContent("1.50");
-  });
+  await user.click(cherriesCheckbox);
+  expect(toppingsTotal).toHaveTextContent("1.50");
 
   // add hot fudge and check subtotal
   const hotFudgeCheckbox = await screen.findByRole("checkbox", {
     name: "Hot fudge",
   });
-  user.click(hotFudgeCheckbox);
-  await waitFor(() => {
-    expect(toppingsTotal).toHaveTextContent("3.00");
-  });
+  await user.click(hotFudgeCheckbox);
+  expect(toppingsTotal).toHaveTextContent("3.00");
 
   // remove hot fudge and check subtotal
-  user.click(hotFudgeCheckbox);
-  await waitFor(() => {
-    expect(toppingsTotal).toHaveTextContent("1.50");
-  });
+  await user.click(hotFudgeCheckbox);
+  expect(toppingsTotal).toHaveTextContent("1.50");
 
   unmount();
 });
