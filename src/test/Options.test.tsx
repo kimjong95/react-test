@@ -1,8 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Options from "../pages/entry/Options";
+import { render } from "../util/testing-library-utils";
 
 test("displays image for each scoop option from server", async () => {
-  render(<Options optionType="scoops" />);
+  const { unmount } = render(<Options optionType="scoops" />);
 
   // find images
   const scoopImages = await screen.findAllByRole("img", { name: /scoop$/i });
@@ -12,10 +13,12 @@ test("displays image for each scoop option from server", async () => {
   // @ts-ignore
   const altText = scoopImages.map((element) => element.alt);
   expect(altText).toEqual(["Chocolate scoop", "Vanilla scoop"]);
+
+  unmount();
 });
 
 test("displays image for each topping option from server", async () => {
-  render(<Options optionType="toppings" />);
+  const { unmount } = render(<Options optionType="toppings" />);
 
   // find images
   const toppingImages = await screen.findAllByRole("img", {
@@ -31,4 +34,5 @@ test("displays image for each topping option from server", async () => {
     "M&Ms topping",
     "Hot fudge topping",
   ]);
+  unmount();
 });

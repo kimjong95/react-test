@@ -1,9 +1,20 @@
+import { Container } from "react-bootstrap";
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
-import SummaryForm from "./pages/summary/SummaryForm";
+import { OrderDetailsProvider } from "./context/OrderDetail";
+import OrderEntry from "./pages/entry/OrderEntry";
 
 function App() {
-  return <SummaryForm />;
+  return (
+    <Container>
+      <OrderDetailsProvider>
+        {/* Summary page and entry page need provider */}
+        <OrderEntry />
+      </OrderDetailsProvider>
+      {/* Confirmation page does not need provider */}
+      {/* <OrderConfirmation /> */}
+    </Container>
+  );
 }
 
 export default App;
